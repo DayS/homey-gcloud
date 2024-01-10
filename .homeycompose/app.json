@@ -1,0 +1,28 @@
+{
+  "id": "fr.dvilleneuve.gcloud",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "GCloud"
+  },
+  "description": {
+    "en": "Add support for some Google Cloud services"
+  },
+  "category": [
+    "tools"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Damien Villeneuve",
+    "email": "contact@dvilleneuve.fr"
+  }
+}
