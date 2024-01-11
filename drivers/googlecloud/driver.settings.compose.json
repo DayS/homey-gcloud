@@ -1,0 +1,36 @@
+[
+  {
+    "id": "projectId",
+    "type": "text",
+    "label": {
+      "en": "Google Cloud project id"
+    },
+    "value": "",
+    "hint": {
+      "en": "lorem-12345"
+    }
+  },
+  {
+    "id": "serviceAccount",
+    "type": "textarea",
+    "label": {
+      "en": "Google Cloud service account (JSON payload)"
+    },
+    "value": "",
+    "hint": {
+      "en": "{\n        'type': 'service_account',\n        'project_id': '',\n        'private_key_id': '',\n        'private_key': '-----BEGIN PRIVATE KEY-----\\n-----END PRIVATE KEY-----\n',\n        'client_email': '',\n        'client_id': '',\n        'auth_uri': 'https://accounts.google.com/o/oauth2/auth',\n        'token_uri': 'https://oauth2.googleapis.com/token',\n        'auth_provider_x509_cert_url': 'https://www.googleapis.com/oauth2/v1/certs',\n        'client_x509_cert_url': ''\n      }"
+    }
+  },
+  {
+    "type": "group",
+    "label": { "en": "Logs" },
+    "children": [
+      {
+        "id": "defaultLogger",
+        "type": "text",
+        "label": { "en": "Default logger name" },
+        "value": "homey-logs"
+      }
+    ]
+  }
+]

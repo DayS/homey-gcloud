@@ -1,4 +1,5 @@
 import Homey from 'homey';
+import { GCloudApp } from '../../app';
 
 class GoogleCloudDevice extends Homey.Device {
 
@@ -7,13 +8,10 @@ class GoogleCloudDevice extends Homey.Device {
    */
   async onInit() {
     this.log('GoogleCloudDevice has been initialized');
-  }
 
-  /**
-   * onAdded is called when the user adds the device, called just after pairing.
-   */
-  async onAdded() {
-    this.log('GoogleCloudDevice has been added');
+    this.setUnavailable('GCloud connection not configured yet').catch(this.error);
+
+    this.initGCloud();
   }
 
   /**
@@ -34,22 +32,25 @@ class GoogleCloudDevice extends Homey.Device {
     changedKeys: string[];
   }): Promise<string | void> {
     this.log("GoogleCloudDevice settings where changed");
+
+    this.initGCloud();
   }
 
-  /**
-   * onRenamed is called when the user updates the device's name.
-   * This method can be used this to synchronise the name to the device.
-   * @param {string} name The new name
-   */
-  async onRenamed(name: string) {
-    this.log('GoogleCloudDevice was renamed');
+  initGCloud() {
+    this.log('Setting up GCloud');
+
+    try {
+      const settings = this.getSettings();
+      this.myApp().logs.init(settings.projectId, settings.serviceAccount);
+      
+      this.setAvailable().catch(this.error);
+    } catch (e) {
+      this.setUnavailable('Invalid connection information').catch(this.error);
+    }
   }
 
-  /**
-   * onDeleted is called when the user deleted the device.
-   */
-  async onDeleted() {
-    this.log('GoogleCloudDevice has been deleted');
+  myApp(): GCloudApp {
+    return this.homey.app as GCloudApp
   }
 
 }

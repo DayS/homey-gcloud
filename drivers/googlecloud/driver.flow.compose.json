@@ -1,0 +1,101 @@
+{
+    "actions": [
+        {
+            "id": "gcloud_logs_pushLog",
+            "highlight": true,
+            "title": {
+                "en": "Push a log"
+            },
+            "titleFormatted": {
+                "en": "Push a [[severity]] log to [[logger]]: [[text]]"
+            },
+            "args": [
+                {
+                    "name": "text",
+                    "type": "text",
+                    "placeholder": {
+                        "en": "Text"
+                    },
+                    "title": {
+                        "en": "Text"
+                    }
+                },
+                {
+                    "name": "logger",
+                    "type": "text",
+                    "required": false,
+                    "placeholder": {
+                        "en": ""
+                    },
+                    "title": {
+                        "en": "Logger name (empty for default setting)"
+                    }
+                },
+                {
+                    "name": "severity",
+                    "type": "dropdown",
+                    "value": "DEFAULT",
+                    "title": {
+                        "en": "Severity"
+                    },
+                    "values": [
+                        {
+                            "id": "DEFAULT",
+                            "title": {
+                                "en": "Default"
+                            }
+                        },
+                        {
+                            "id": "DEBUG",
+                            "title": {
+                                "en": "Debug"
+                            }
+                        },
+                        {
+                            "id": "INFO",
+                            "title": {
+                                "en": "Info"
+                            }
+                        },
+                        {
+                            "id": "NOTICE",
+                            "title": {
+                                "en": "Notice"
+                            }
+                        },
+                        {
+                            "id": "WARNING",
+                            "title": {
+                                "en": "Warning"
+                            }
+                        },
+                        {
+                            "id": "ERROR",
+                            "title": {
+                                "en": "Error"
+                            }
+                        },
+                        {
+                            "id": "CRITICAL",
+                            "title": {
+                                "en": "Critical"
+                            }
+                        },
+                        {
+                            "id": "ALERT",
+                            "title": {
+                                "en": "Alert"
+                            }
+                        },
+                        {
+                            "id": "EMERGENCY",
+                            "title": {
+                                "en": "Emergency"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

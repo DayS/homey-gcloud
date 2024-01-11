@@ -26,6 +26,112 @@
     "name": "Damien Villeneuve",
     "email": "contact@dvilleneuve.fr"
   },
+  "flow": {
+    "actions": [
+      {
+        "id": "gcloud_logs_pushLog",
+        "highlight": true,
+        "title": {
+          "en": "Push a log"
+        },
+        "titleFormatted": {
+          "en": "Push a [[severity]] log to [[logger]]: [[text]]"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=googlecloud"
+          },
+          {
+            "name": "text",
+            "type": "text",
+            "placeholder": {
+              "en": "Text"
+            },
+            "title": {
+              "en": "Text"
+            }
+          },
+          {
+            "name": "logger",
+            "type": "text",
+            "required": false,
+            "placeholder": {
+              "en": ""
+            },
+            "title": {
+              "en": "Logger name (empty for default setting)"
+            }
+          },
+          {
+            "name": "severity",
+            "type": "dropdown",
+            "value": "DEFAULT",
+            "title": {
+              "en": "Severity"
+            },
+            "values": [
+              {
+                "id": "DEFAULT",
+                "title": {
+                  "en": "Default"
+                }
+              },
+              {
+                "id": "DEBUG",
+                "title": {
+                  "en": "Debug"
+                }
+              },
+              {
+                "id": "INFO",
+                "title": {
+                  "en": "Info"
+                }
+              },
+              {
+                "id": "NOTICE",
+                "title": {
+                  "en": "Notice"
+                }
+              },
+              {
+                "id": "WARNING",
+                "title": {
+                  "en": "Warning"
+                }
+              },
+              {
+                "id": "ERROR",
+                "title": {
+                  "en": "Error"
+                }
+              },
+              {
+                "id": "CRITICAL",
+                "title": {
+                  "en": "Critical"
+                }
+              },
+              {
+                "id": "ALERT",
+                "title": {
+                  "en": "Alert"
+                }
+              },
+              {
+                "id": "EMERGENCY",
+                "title": {
+                  "en": "Emergency"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {
@@ -42,7 +148,60 @@
         "large": "/drivers/googlecloud/assets/images/large.png",
         "xlarge": "/drivers/googlecloud/assets/images/xlarge.png"
       },
-      "id": "googlecloud"
+      "pair": [
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "googlecloud",
+      "settings": [
+        {
+          "id": "projectId",
+          "type": "text",
+          "label": {
+            "en": "Google Cloud project id"
+          },
+          "value": "",
+          "hint": {
+            "en": "lorem-12345"
+          }
+        },
+        {
+          "id": "serviceAccount",
+          "type": "textarea",
+          "label": {
+            "en": "Google Cloud service account (JSON payload)"
+          },
+          "value": "",
+          "hint": {
+            "en": "{\n        'type': 'service_account',\n        'project_id': '',\n        'private_key_id': '',\n        'private_key': '-----BEGIN PRIVATE KEY-----\\n-----END PRIVATE KEY-----\n',\n        'client_email': '',\n        'client_id': '',\n        'auth_uri': 'https://accounts.google.com/o/oauth2/auth',\n        'token_uri': 'https://oauth2.googleapis.com/token',\n        'auth_provider_x509_cert_url': 'https://www.googleapis.com/oauth2/v1/certs',\n        'client_x509_cert_url': ''\n      }"
+          }
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Logs"
+          },
+          "children": [
+            {
+              "id": "defaultLogger",
+              "type": "text",
+              "label": {
+                "en": "Default logger name"
+              },
+              "value": "homey-logs"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
