@@ -3,9 +3,9 @@ import { PassThrough } from 'stream';
 
 export class GCloudStorage {
 
-    storage!: Storage;
+    storage: Storage;
 
-    init(projectId: string, serviceAccount: object) {
+    constructor(projectId: string, serviceAccount: object) {
         this.storage = new Storage({
             projectId: projectId,
             credentials: serviceAccount

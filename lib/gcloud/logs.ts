@@ -2,9 +2,9 @@ import { Logging, Severity, SeverityNames } from '@google-cloud/logging';
 
 export class GCloudLogs {
 
-    logging!: Logging;
+    logging: Logging;
 
-    init(projectId: string, serviceAccount: object) {
+    constructor(projectId: string, serviceAccount: object) {
         this.logging = new Logging({
             projectId: projectId,
             credentials: serviceAccount

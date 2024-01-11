@@ -14,7 +14,7 @@ class GoogleCloudDriver extends Homey.Driver {
     this.homey.flow.getActionCard('gcloud_logs_pushLog').registerRunListener(async (args: any, state: any) => {
       const settings = args.device.getSettings();
 
-      this.myApp().logs.pushLog(
+      this.myApp().gcloud?.logs.pushLog(
         args.logger || settings.defaultLogger,
         args.severity,
         args.text
@@ -25,7 +25,7 @@ class GoogleCloudDriver extends Homey.Driver {
       const settings = args.device.getSettings();
       const imageToken = args.droptoken as Image;
 
-      this.myApp().storage.uploadFile(
+      this.myApp().gcloud?.storage.uploadFile(
         args.bucketName || settings.defaultBucketName,
         await imageToken.getStream(),
         args.destinationPath
