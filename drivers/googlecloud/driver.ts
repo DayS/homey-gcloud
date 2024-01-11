@@ -1,6 +1,7 @@
 import Homey from 'homey';
 import { v4 as uuidv4 } from 'uuid';
 import { GCloudApp } from '../../app';
+import { Image } from 'homey/lib/FlowToken';
 
 class GoogleCloudDriver extends Homey.Driver {
 
@@ -17,6 +18,17 @@ class GoogleCloudDriver extends Homey.Driver {
         args.logger || settings.defaultLogger,
         args.severity,
         args.text
+      ).catch(this.error)
+    });
+
+    this.homey.flow.getActionCard('gcloud_storage_uploadImage').registerRunListener(async (args: any, state: any) => {
+      const settings = args.device.getSettings();
+      const imageToken = args.droptoken as Image;
+
+      this.myApp().storage.uploadFile(
+        args.bucketName || settings.defaultBucketName,
+        await imageToken.getStream(),
+        args.destinationPath
       ).catch(this.error)
     });
   }

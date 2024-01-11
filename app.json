@@ -129,6 +129,40 @@
             ]
           }
         ]
+      },
+      {
+        "id": "gcloud_storage_uploadImage",
+        "highlight": true,
+        "title": {
+          "en": "Upload an image"
+        },
+        "titleFormatted": {
+          "en": "Upload image [[droptoken]] in bucket [[bucketName]] at [[destinationPath]]"
+        },
+        "droptoken": [
+          "image"
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=googlecloud"
+          },
+          {
+            "name": "bucketName",
+            "type": "text",
+            "title": {
+              "en": "Bucket name (empty for default setting)"
+            }
+          },
+          {
+            "name": "destinationPath",
+            "type": "text",
+            "title": {
+              "en": "Destination path"
+            }
+          }
+        ]
       }
     ]
   },
@@ -198,6 +232,22 @@
                 "en": "Default logger name"
               },
               "value": "homey-logs"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Storage"
+          },
+          "children": [
+            {
+              "id": "defaultBucketNae",
+              "type": "text",
+              "label": {
+                "en": "Default bucket name"
+              },
+              "value": "homey"
             }
           ]
         }

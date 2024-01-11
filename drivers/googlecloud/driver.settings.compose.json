@@ -32,5 +32,17 @@
         "value": "homey-logs"
       }
     ]
+  },
+  {
+    "type": "group",
+    "label": { "en": "Storage" },
+    "children": [
+      {
+        "id": "defaultBucketNae",
+        "type": "text",
+        "label": { "en": "Default bucket name" },
+        "value": "homey"
+      }
+    ]
   }
 ]

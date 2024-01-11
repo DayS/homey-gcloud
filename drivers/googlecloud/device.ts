@@ -41,7 +41,9 @@ class GoogleCloudDevice extends Homey.Device {
 
     try {
       const settings = this.getSettings();
-      this.myApp().logs.init(settings.projectId, settings.serviceAccount);
+      const serviceAccount = JSON.parse(settings.serviceAccount);
+      this.myApp().logs.init(settings.projectId, serviceAccount);
+      this.myApp().storage.init(settings.projectId, serviceAccount);
       
       this.setAvailable().catch(this.error);
     } catch (e) {

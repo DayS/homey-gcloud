@@ -96,6 +96,35 @@
                     ]
                 }
             ]
+        },
+        {
+            "id": "gcloud_storage_uploadImage",
+            "highlight": true,
+            "title": {
+                "en": "Upload an image"
+            },
+            "titleFormatted": {
+                "en": "Upload image [[droptoken]] in bucket [[bucketName]] at [[destinationPath]]"
+            },
+            "droptoken": [
+                "image"
+            ],
+            "args": [
+                {
+                    "name": "bucketName",
+                    "type": "text",
+                    "title": {
+                        "en": "Bucket name (empty for default setting)"
+                    }
+                },
+                {
+                    "name": "destinationPath",
+                    "type": "text",
+                    "title": {
+                        "en": "Destination path"
+                    }
+                }
+            ]
         }
     ]
 }
