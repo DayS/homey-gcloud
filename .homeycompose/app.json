@@ -11,7 +11,7 @@
     "en": "Google Cloud"
   },
   "description": {
-    "en": "Add integration with Google Cloud services"
+    "en": "Augment Homey's features with cloud services"
   },
   "category": [
     "tools"

@@ -1,12 +1,21 @@
-Connect to multiple Google Cloud services and extends Homey's capabilities.
+Connect to Google Cloud Platform and use services to extends Homey's capabilities.
 
 
 Logs:
-- Push some text to Google Logs with a given severity
+- Push Homey's activity to Google Logs with a given severity and keep an eye on your home
 
 Storage:
-- Upload files to Google Storage in an existing bucket
+- Upload camera snapshot into a Google Storage's bucket to act as backup
 
 
-Each device must be configured with a Google Cloud projectId and a Google Cloud Service Account JSON content.
-You can add as many device (ie: project) as you want.
+You can use as many Google project as you like, by adding new devices.
+Each device must be configured with a dedicated Google Cloud project id and a Google Cloud Service Account JSON content to grant access.
+
+
+Preparing a Google Cloud project :
+- Create a new GCP project : https://console.cloud.google.com/projectcreate
+- In "Api and services", activate "Cloud Logging API" and "Cloud Storage API"
+- Create a bucket in Google Storage : https://console.cloud.google.com/storage/create-bucket
+- Create a service account to allow Homey to call GCP API : https://console.cloud.google.com/iam-admin/serviceaccounts
+-- Give the name of your choice and add the following roles : 'roles/logging.logWriter', 'roles/storage.objectUser'
+-- In the detail of the created service account, go in "keys" tab and create a new JSON key. This is your Google Service Account JSON content to use in Homey's device settings.
